@@ -11,7 +11,6 @@ class Lead extends Model
 
       protected $primaryKey = 'lead_id';
      protected $fillable=[
-        'employ_id',
         'lead_name',
         'lead_email',
         'lead_phone',
@@ -21,7 +20,7 @@ class Lead extends Model
         'created_at',
         'updated_at',
     ];
-    public function employeeusers()
+    public function employeeuser()
 {
     return $this->belongsTo(Employeeuser::class, 'lead_id', 'employ_id');
 }

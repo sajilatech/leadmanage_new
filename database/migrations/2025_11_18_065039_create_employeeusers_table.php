@@ -16,6 +16,7 @@ class CreateEmployeeusersTable extends Migration
         Schema::create('employeeusers', function (Blueprint $table) {
             $table->id('employ_id');
             $table->string('employ_name',50);
+            $table->string('employ_type',10)->default('user');
             $table->string('employ_email',100);
              $table->string('employ_phone',25);
               $table->string('employ_username',50)->nullable();

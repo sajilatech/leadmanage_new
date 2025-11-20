@@ -26,16 +26,17 @@ class LoginController extends Controller
     
         $res = $request->validate($validation_array);
        
-        $record = Admin::where('status', 1)
-        ->where('login_name', $request->username)
+        $record = Employeeuser::where('status', 1)
+        ->where('employ_username', $request->username)
         ->first();
-        if ($record && Hash::check($request->password, $record->password)) {
-            if ($record) {
+       
+        if ($record && Hash::check($request->password, $record->employ_password)) {
+            if ($record) { 
                 session([
-                    'username' => $record->admin_name,
-                    'email' => $record->email,
-                    'admin_type'=>$record->usertype,
-                    'admin_id' => $record->admin_id,
+                    'username' => $record->employ_name,
+                    'email' => $record->employ_email,
+                    'admin_type'=>$record->employ_type,
+                    'logged_id' => $record->employ_id,
                 ]);
                return redirect()->route('dashboard')->with('success_msg', 'Logged successfully.');
                // return response()->json(['message' => 'Login successful', 'user' => $record]);
@@ -57,8 +58,10 @@ class LoginController extends Controller
 
     function dashboard(){
         $data['title']='Admin: Dashboard';
-        $userName = session('username');
-        $admin_type = session('admin_type');
+        $session_data=session()->all();
+       
+        $userName =$session_data['username'];
+        $admin_type = $session_data['admin_type'];
         $data['login_name']=$userName;
         $data['admin_type']=$admin_type;
         $data['total_users']=Employeeuser::count();

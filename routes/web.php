@@ -37,3 +37,6 @@ Route::post('/adduser', [UserController::class, 'add'])->name('adduser');
 
    Route::get('/userstatus/{id}/{status}', [UserController::class, 'status'])->name('user.status');
  Route::get('/userdrop/{id}', [UserController::class, 'drop'])->name('user.drop');
+
+ Route::get('/leadcreate', [LeadController::class, 'create'])->name('leadcreate');
+Route::post('/addlead', [LeadController::class, 'add'])->name('addlead');

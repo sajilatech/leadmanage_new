@@ -15,6 +15,7 @@ class Employeeuser extends Model
         'employ_phone',
          'employ_username',
           'employ_password',
+          'employ_type',
         'status',
         'done_by',
         'created_at',

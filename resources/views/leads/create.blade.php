@@ -1,22 +1,33 @@
-
 @include('layout.header')
 @include('layout.sidebar')
-  <!-- Header -->
-  <header class="text-center">
-    <h2>My Application</h2>
-  </header>
 
-  <!-- Login Form -->
-  <div class="card login-card">
-    <div class="card-body">
-      <h4 class="card-title text-center mb-4">Create User</h4>
-    @if (session('success_msg'))
+
+
+<!-- Main Content -->
+  <main>
+    <div class="container-fluid">
+      <h3 class="mb-4">Lead</h3>
+      
+       
+           @if (session('success_msg'))
     <div style="color:green; font-size:20px;"> {{ session('success_msg') }}</div>
     @endif
     @if (session('error_msg'))
     <div style="color:red; font-size:20px;"> {{ session('error_msg') }}</div>
     @endif
-    <form action="{{route('adduser')}}" method="post">@csrf
+     
+          <div class="card text-center shadow-sm">
+           
+             @if (session('success_msg'))
+    <div style="color:green; font-size:20px;"> {{ session('success_msg') }}</div>
+    @endif
+    @if (session('error_msg'))
+    <div style="color:red; font-size:20px;"> {{ session('error_msg') }}</div>
+    @endif
+    <div class="row g-3">
+     
+          <div class="col-6"> <div class="card-body">
+    <form action="{{route('addlead')}}" method="post">@csrf
    
       <input type="text" class="form-control" id="name" placeholder="Name" name="name">
                                     @error('name')
@@ -30,7 +41,7 @@
                                     @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror 
-      <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+      <!-- <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                                     @error('username')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror  
@@ -38,7 +49,7 @@
       <input type="password" class="form-control" id="password" name="password">
                                     @error('password')
                                         <span class="text-danger">{{ $message }}</span>
-                                    @enderror 
+                                    @enderror  -->
                                     <div class="row">
         <div class="col-xs-8">
               
@@ -50,16 +61,12 @@
         <!-- /.col -->
       </div>
     </form>
+</div>
+          </div>
+        </div>
 
-    </div>
-  </div>
+      </div>
 
-  <!-- Footer -->
-  <footer class="text-center">
-    <p class="mb-0">&copy; 2025 My Application. All rights reserved.</p>
-  </footer>
+</main>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+@include('layout.sidebar')
